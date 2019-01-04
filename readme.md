@@ -64,7 +64,4 @@ All parameters are optional.
 | `<ram-size>` | The RAM size used during setup routine in MB (might affect size of swap partition) | `2048` |
 | `<disk-size>` | The disk size of the disk image file to be created | `10G` |
 | `<disk-format>` | The format of the disk image file to be created (qcow2 or raw) | `qcow2` |
-| `<ssh-public-key-file>` | The ssh public key to be placed in authorized_keys | `$HOME/.ssh/id_rsa.pub` |
 | `<disk-file>` | The path of the disk image created by this script | `ubuntu-<VERSION>-amd64-<ram-size>-<disk-size>.<disk-format>` |
-
-Use the generated disk image as template image and create copies of it to deploy virtual or physical machines. Do not boot the template itself, since the ssh host key will be generated on first boot.
