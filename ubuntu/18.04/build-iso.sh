@@ -31,8 +31,12 @@ cd "$TMP_INITRD_DIR"
 mkdir "./custom"
 cp "$SCRIPT_DIR/custom/preseed.cfg" "./preseed.cfg"
 
+cp "$SCRIPT_DIR/custom/splash.png" "$TMP_DISC_DIR/splash.png"
+cp "$SCRIPT_DIR/custom/menu.cfg" "$TMP_DISC_DIR/menu.cfg"
+
 # append assets to initrd image
 cd "$TMP_INITRD_DIR"
+
 cat "$TMP_DISC_DIR/initrd.gz" | gzip -d > "./initrd"
 echo "./preseed.cfg" | fakeroot cpio -o -H newc -A -F "./initrd"
 find "./custom" | fakeroot cpio -o -H newc -A -F "./initrd"
