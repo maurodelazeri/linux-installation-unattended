@@ -6,7 +6,7 @@ set -e
 : "${BIN_XORRISO:=$(type -P xorriso)}"
 
 # get parameters
-TARGET_ISO=${2:-"`pwd`/ubuntu-18.04-netboot-amd64-unattended.iso"}
+TARGET_ISO=${1:-"`pwd`/ubuntu-18.04-netboot-amd64-unattended.iso"}
 
 # get directories
 CURRENT_DIR="`pwd`"
