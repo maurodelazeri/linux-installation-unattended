@@ -6,15 +6,7 @@ set -e
 : "${BIN_XORRISO:=$(type -P xorriso)}"
 
 # get parameters
-SSH_PUBLIC_KEY_FILE=${1:-"$HOME/.ssh/id_rsa.pub"}
 TARGET_ISO=${2:-"`pwd`/ubuntu-18.04-netboot-amd64-unattended.iso"}
-
-# check if ssh key exists
-if [ ! -f "$SSH_PUBLIC_KEY_FILE" ];
-then
-    echo "Error: public SSH key $SSH_PUBLIC_KEY_FILE not found!"
-    exit 1
-fi
 
 # get directories
 CURRENT_DIR="`pwd`"
@@ -38,7 +30,6 @@ patch -p1 -i "$SCRIPT_DIR/custom/boot-menu.patch"
 cd "$TMP_INITRD_DIR"
 mkdir "./custom"
 cp "$SCRIPT_DIR/custom/preseed.cfg" "./preseed.cfg"
-cp "$SSH_PUBLIC_KEY_FILE" "./custom/userkey.pub"
 
 # append assets to initrd image
 cd "$TMP_INITRD_DIR"
