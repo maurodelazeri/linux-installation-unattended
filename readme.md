@@ -12,9 +12,7 @@ Use the `build-disk.sh` script to create a cloneable preinstalled disk image bas
 
 * Fully automated installation procedure.
 * Shutdown and power off when finished. We consider this a feature since it produces a defined and detectable state once the setup is complete.
-* Authentication based on SSH public key and not on a password.
 * Setup ensures about 25% of free disk space in the LVM group. We consider this a feature since it enables you to use LVM snapshots; e.g., for backup purposes.
-* Generates SSH server keys on first boot and not during setup stage. We consider this a feature since it enables you to use the installed image as a template for multiple machines.
 * Prints IPv4 and IPv6 address of the device on screen once booted.
 * USB bootable hybrid ISO image.
 * UEFI and BIOS mode supported.
@@ -40,7 +38,7 @@ The script `build-disk.sh` is not supported on Mac.
 You can run the `build-iso.sh` script as regular user. No root permissions required.
 
 ```sh
-./ubuntu/<VERSION>/build-iso.sh <ssh-public-key-file> <target-iso-file>
+./ubuntu/<VERSION>/build-iso.sh <target-iso-file>
 ```
 
 All parameters are optional.
@@ -52,14 +50,12 @@ All parameters are optional.
 
 Boot the created ISO image on the target VM or physical machine. Be aware the setup will start within 10 seconds automatically and will reset the disk of the target device completely. The setup tries to eject the ISO/CD during its final stage. It usually works on physical machines, and it works on VirtualBox. It might not function in certain KVM environments in case the managing environment is not aware of the *eject event*. In that case, you have to detach the ISO image manually to prevent an unintended reinstall.
 
-Power-on the machine and log into it as root using your ssh key. The ssh host key will be generated on first boot.
-
 #### Build disk images
 
 You can run the `build-disk.sh` script as regular user. No root permissions required, if you are able to run `kvm` with your user account.
 
 ```sh
-./ubuntu/<VERSION>/build-disk.sh <ram-size> <disk-size> <disk-format> <ssh-public-key-file> <disk-file>
+./ubuntu/<VERSION>/build-disk.sh <ram-size> <disk-size> <disk-format> <disk-file>
 ```
 
 All parameters are optional.
