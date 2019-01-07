@@ -22,9 +22,9 @@ wget -4 "$SOURCE_ISO_URL" -O "./netboot.iso"
 "$BIN_7Z" x "./netboot.iso" "-o$TMP_DISC_DIR"
 
 # patch boot menu
-cd "$TMP_DISC_DIR"
-dos2unix "./isolinux.cfg"
-patch -p1 -i "$SCRIPT_DIR/custom/boot-menu.patch"
+# cd "$TMP_DISC_DIR"
+# dos2unix "./isolinux.cfg"
+# patch -p1 -i "$SCRIPT_DIR/custom/boot-menu.patch"
 
 # prepare assets
 cd "$TMP_INITRD_DIR"
@@ -33,6 +33,7 @@ cp "$SCRIPT_DIR/custom/preseed.cfg" "./preseed.cfg"
 
 cp "$SCRIPT_DIR/custom/splash.png" "$TMP_DISC_DIR/splash.png"
 cp "$SCRIPT_DIR/custom/menu.cfg" "$TMP_DISC_DIR/menu.cfg"
+cp "$SCRIPT_DIR/custom/grub.cfg" "$TMP_DISC_DIR/boot/grub/grub.cfg"
 
 # append assets to initrd image
 cd "$TMP_INITRD_DIR"
