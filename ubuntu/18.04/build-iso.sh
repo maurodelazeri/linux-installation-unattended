@@ -33,7 +33,7 @@ cp "$SCRIPT_DIR/custom/preseed.cfg" "./preseed.cfg"
 
 cp "$SCRIPT_DIR/custom/splash.png" "$TMP_DISC_DIR/splash.png"
 cp "$SCRIPT_DIR/custom/menu.cfg" "$TMP_DISC_DIR/menu.cfg"
-cp "$SCRIPT_DIR/custom/install.sh" "$TMP_DISC_DIR/install.sh"
+cp "$SCRIPT_DIR/custom/install.sh" "$TMP_DISC_DIR/tmp/install.sh"
 
 # append assets to initrd image
 cd "$TMP_INITRD_DIR"
